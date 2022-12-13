@@ -83,6 +83,7 @@ public class Node {
         return AssistUtils.hashCode(getId(), getFid(), getName(), getValue(), getChildren());
     }
 
+    //代码规范里的那个格式写出来的和echarts官网的不是完全一样，有隐患不敢用
     @Override
     public String toString() {
         return "{" +
