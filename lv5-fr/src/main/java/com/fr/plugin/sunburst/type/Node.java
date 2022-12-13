@@ -85,12 +85,10 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "id=" + id +
-                ", fid=" + fid +
-                ", name=" + name +
-                ", value=" + value +
-                ", children=" + children +
+        return "{" +
+                "name:" + name +
+                ", value:" + value +
+                ", children:" + children +
                 '}';
     }
 }
