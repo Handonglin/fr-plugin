@@ -3,6 +3,6 @@ rootProject.name = 'starter'
 //include(':lv2')
 include(':lv3')
 include(':lv4')
+include(':lv5-fr')
 //include(':lv6')
 //include(':lv7')
-include(':lv5-fr')
