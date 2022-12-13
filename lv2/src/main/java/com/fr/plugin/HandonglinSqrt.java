@@ -47,18 +47,7 @@ public class HandonglinSqrt extends AbstractFunction{
         return df.format(ret);
     }
 
-    // 使用牛顿迭代法求平方根
-    private double getSqrt(double num) {
-        double curValue = 1.0;
-        double checkValue = 0.0;
-
-        do {
-            curValue = (num / curValue + curValue) / 2.0;
-            checkValue = curValue * curValue - num;
-        } while ((checkValue >= 0 ? checkValue : -checkValue) > PRECISION);
-
-        return curValue;
-    }
+    //牛顿迭代法
     private double Sqrt(double input){
         double x = 1;
         double x1 = x - (x*x - input)/(2*x);
