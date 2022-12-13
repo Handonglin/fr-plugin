@@ -7,14 +7,7 @@ import org.bson.Document;
 import java.util.*;
 
 public class MongoDBDataDealUtils {
-    /*col3=value3
-     * col2=value2
-     * col1=value1,
-     *
-     * col1   col2    col3
-     *value1  value2  value3
-     * col1=[value1, value2, value3], col2=[value11, value22, value33]
-     * */
+
 
     public static DataWarp<Object> getDataWarpper(MongoCursor<Document> results) {
         Set<String> columNames = new TreeSet<>();
@@ -86,7 +79,6 @@ public class MongoDBDataDealUtils {
 
     }
 
-
     //[[v1,v2,v3],[v11,v22,v33]]->[[v1,v11],[v2,v22],[v3,v33]]
     private static List colToRowCollection(List<List<Object>> realList) {
         int oldrow = realList.size();
@@ -95,8 +87,7 @@ public class MongoDBDataDealUtils {
         for (int i = 0; i < oldrow; i++) {
             curList.add(realList.get(i));
         }
-        //System.out.println("realList"+realList);
-        //System.out.println("curList"+curList);
+
         return curList;
     }
 

@@ -32,13 +32,6 @@ public class SimpleMongoDBClient implements MongoDB{
 
             mongoDatabase=mongoClient.getDatabase(database);
 
-            MongoCollection<Document> t1 = mongoDatabase.getCollection("t1");
-            MongoCursor<Document> iterator = t1.find().iterator();
-
-            while (iterator.hasNext()){
-                Document next = iterator.next();
-                //System.out.println(next);
-            }
             //System.out.println("======SimpleMongoDBClient nopwd Create End==========\n");
 
 
