@@ -67,9 +67,7 @@ public class Node {
         this.children = children;
     }
 
-    public void addChildren(Node children) {
-        this.children.add(children);
-    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -85,4 +83,14 @@ public class Node {
         return AssistUtils.hashCode(getId(), getFid(), getName(), getValue(), getChildren());
     }
 
+    @Override
+    public String toString() {
+        return "Node{" +
+                "id=" + id +
+                ", fid=" + fid +
+                ", name=" + name +
+                ", value=" + value +
+                ", children=" + children +
+                '}';
+    }
 }
