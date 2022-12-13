@@ -10,3 +10,5 @@ local.properties
 classes/
 transform-classes/
 tomcat.*
+/lv3/
+/lv5-fr/
