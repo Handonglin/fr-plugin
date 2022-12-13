@@ -1,9 +1,11 @@
 package com.fr.plugin.db.mongodb.connect.core.handler;
 
 
+import com.fr.general.ComparatorUtils;
 import com.fr.plugin.db.mongodb.connect.core.handler.bean.SimpleMongoDBClient;
 import com.fr.plugin.db.mongodb.connect.core.handler.bean.emb.MongoDB;
 import com.fr.plugin.db.mongodb.table.util.MongoDBUtils;
+import com.fr.stable.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class CreateCollectionHandler {
             return clientMap.get(uid);
         } else {
             //没设置用户名和密码
-            if (username.equals("") || password.equals("")){
+            if (ComparatorUtils.equals(username, StringUtils.EMPTY)|| ComparatorUtils.equals(password,StringUtils.EMPTY)){
                 MongoDB mongoDB = noPwd(host, port, database);
                 MongoDBUtils.database=database;
                 clientMap.put(uid,mongoDB);

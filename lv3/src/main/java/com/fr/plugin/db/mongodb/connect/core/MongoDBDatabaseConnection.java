@@ -18,15 +18,6 @@ import java.util.List;
 
 @JsonIgnoreProperties({"id", "data", "classInfo", "nameSpace", "driver"})
 public class MongoDBDatabaseConnection extends BaseConnection {
-
-//    static {
-//        try {
-//            PrintStream printStream=new PrintStream("");
-//            System.setOut(printStream);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
     private static final String DEFAULT_MongoDB_HOST = "localhost";
     private static final int DEFAULT_MongoDB_PORT = 27017;
 
@@ -37,7 +28,6 @@ public class MongoDBDatabaseConnection extends BaseConnection {
     private Conf<String> password = HolderKit.simple(StringKit.EMPTY);
     private Conf<String> database = HolderKit.simple(StringKit.EMPTY);
 
-    private Conf<Boolean> cluster = HolderKit.simple(false);
 
     public MongoDBDatabaseConnection() {
 
@@ -82,13 +72,6 @@ public class MongoDBDatabaseConnection extends BaseConnection {
         this.password.set(password);
     }
 
-    public boolean isCluster() {
-        return cluster.get();
-    }
-
-    public void setCluster(boolean cluster) {
-        this.cluster.set(cluster);
-    }
 
     //测试连接的按钮不用自己写，只需要实现对应的测试方法就行，kms上说mongodb没有
     //正式用来测试连接的，那就直接真正连接，能连上就成功，连不上就失败
@@ -197,7 +180,6 @@ public class MongoDBDatabaseConnection extends BaseConnection {
                 }
                 setDatabase(reader.getAttrAsString("database", StringKit.EMPTY));
 
-                setCluster(reader.getAttrAsBoolean("cluster", false));
             }
         }
     }
@@ -215,7 +197,6 @@ public class MongoDBDatabaseConnection extends BaseConnection {
         }
         writer.attr("database", getDatabase());
 
-        writer.attr("cluster", isCluster());
         writer.end();
     }
 
@@ -228,7 +209,6 @@ public class MongoDBDatabaseConnection extends BaseConnection {
         cloned.password = (Conf<String>) password.clone();
         cloned.database = (Conf<String>) database.clone();
 
-        cloned.cluster = (Conf<Boolean>) cluster.clone();
         return cloned;
     }
 }

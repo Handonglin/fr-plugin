@@ -38,13 +38,7 @@ public class DataProcessUtils {
 
         getChildNodes(nodes,idnodeMap);
 
-        for (int i = 0; i <nodes.size() ; i++) {
-            System.out.println(nodes.get(i).toString());
-        }
-
-        JSONArray data = TurnToJsonUtils.nodesToJson(roots);
-
-        return data;
+        return TurnToJsonUtils.nodesToJson(roots);
 
     }
     private static void getChildNodes(List<Node> nodes, Map<String,Node> idnodeMap) {

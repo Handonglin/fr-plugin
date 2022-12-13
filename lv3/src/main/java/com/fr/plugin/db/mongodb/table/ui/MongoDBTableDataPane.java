@@ -40,10 +40,6 @@ public class MongoDBTableDataPane extends MongoDBBaseTableDataPane<MongoDBTableD
         return new String[]{queryPane.getQuery(), queryPane.getScript()};
     }
 
-//    @Override
-//    public OrderValue getOrderValue() {
-//        return queryPane.getOrderValue();
-//    }
 
     //前者用于呈现数据，比如从JSONConnection中提取host/username/password等配置信息，展现在界面上
     @Override
@@ -60,8 +56,6 @@ public class MongoDBTableDataPane extends MongoDBBaseTableDataPane<MongoDBTableD
 
         //查询语句
         queryPane.setQuery(tableData.getQuery());
-
-        //queryPane.setOrderValue(tableData.getOrderValue());
 
     }
 
@@ -83,8 +77,6 @@ public class MongoDBTableDataPane extends MongoDBBaseTableDataPane<MongoDBTableD
         tableData.setParameters(parameters);
         //设置查询语句
         tableData.setQuery(queryPane.getQuery());
-
-        //tableData.setOrderValue(queryPane.getOrderValue());
 
         return tableData;
     }

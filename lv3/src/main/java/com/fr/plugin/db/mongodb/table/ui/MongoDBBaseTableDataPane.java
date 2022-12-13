@@ -2,12 +2,9 @@ package com.fr.plugin.db.mongodb.table.ui;
 
 import com.fanruan.api.cal.ParameterKit;
 import com.fanruan.api.design.DesignKit;
-import com.fanruan.api.design.ui.action.UpdateAction;
-import com.fanruan.api.design.ui.component.UIToolbar;
 import com.fanruan.api.design.ui.component.table.UITableEditorPane;
 import com.fanruan.api.design.ui.component.table.action.UITableEditAction;
 import com.fanruan.api.design.ui.component.table.model.ParameterTableModel;
-import com.fanruan.api.design.ui.toolbar.ToolBarDef;
 import com.fanruan.api.design.work.AbstractTableDataPane;
 import com.fanruan.api.util.ArrayKit;
 import com.fanruan.api.util.IOKit;
@@ -17,7 +14,6 @@ import com.fr.stable.ParameterProvider;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 /**
  * @author Handonglin
@@ -27,7 +23,6 @@ import java.util.ArrayList;
 public abstract class MongoDBBaseTableDataPane<T extends TableData> extends AbstractTableDataPane<T> {
 
     private static final String REFRESH_BUTTON = DesignKit.i18nText("Plugin-MongoDB_Refresh");
-    private static final String PREVIEW_BUTTON = DesignKit.i18nText("Plugin-MongoDB_Preview");
 
     protected MongoDBConnectionChosePane chosePane;
 
@@ -38,13 +33,6 @@ public abstract class MongoDBBaseTableDataPane<T extends TableData> extends Abst
         this.setLayout(new BorderLayout(4, 4));
 
         Box box = new Box(BoxLayout.Y_AXIS);
-
-        //北模块，添加预览按钮
-        JPanel northPane = new JPanel(new BorderLayout(4, 4));
-        JToolBar editToolBar = createToolBar();
-        northPane.add(editToolBar, BorderLayout.CENTER);
-        northPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 6, 0));
-
 
         ParameterTableModel model = new ParameterTableModel() {
             @Override
@@ -58,8 +46,6 @@ public abstract class MongoDBBaseTableDataPane<T extends TableData> extends Abst
         };
         editorPane = new UITableEditorPane<ParameterProvider>(model);
 
-        //预览
-        //box.add(northPane);
 
         //数据库编号+查询条件 在子类MongoDBTableDataPane实现
         box.add(createQueryPane());
@@ -80,14 +66,6 @@ public abstract class MongoDBBaseTableDataPane<T extends TableData> extends Abst
         this.add(sqlSplitPane, BorderLayout.CENTER);
     }
 
-    private JToolBar createToolBar() {
-        ToolBarDef toolBarDef = new ToolBarDef();
-        toolBarDef.addShortCut(new PreviewAction());
-        UIToolbar editToolBar = ToolBarDef.createJToolBar();
-        toolBarDef.updateToolBar(editToolBar);
-        return editToolBar;
-    }
-
     @Override
     protected String title4PopupWindow() {
         return DesignKit.i18nText("Plugin-MongoDB_Query");
@@ -97,59 +75,13 @@ public abstract class MongoDBBaseTableDataPane<T extends TableData> extends Abst
 
     protected abstract String[] paramTexts();
 
-    //public abstract OrderValue getOrderValue();
-
 
     private void refresh() {
         String[] paramTexts = paramTexts();
 
         ParameterProvider[] parameters = ParameterKit.analyze4Parameters(paramTexts, false);
 
-//        ParameterProvider[] providers = getOrderValue().analyze4Parameters();
-
         editorPane.populate(ArrayKit.addAll(parameters /*, providers*/));
-    }
-
-
-    private void checkParameter() {
-        String[] paramTexts = paramTexts();
-
-        ParameterProvider[] parameters = ParameterKit.analyze4Parameters(paramTexts, false);
-        parameters = ArrayKit.addAll(parameters /*, getOrderValue().analyze4Parameters()*/);
-
-        if (parameters.length < 1 && editorPane.update().size() < 1) {
-            return;
-        }
-        boolean isIn = true;
-        java.util.List<ParameterProvider> list = editorPane.update();
-        java.util.List<String> name = new ArrayList<String>();
-        for (int i = 0; i < list.size(); i++) {
-            name.add(list.get(i).getName());
-        }
-        for (int i = 0; i < parameters.length; i++) {
-            if (!name.contains(parameters[i].getName())) {
-                isIn = false;
-                break;
-            }
-        }
-        if (list.size() == parameters.length && isIn) {
-            return;
-        }
-        refresh();
-    }
-
-
-    private class PreviewAction extends UpdateAction {
-        public PreviewAction() {
-            this.setName(PREVIEW_BUTTON);
-            this.setMnemonic('P');
-            this.setSmallIcon(IOKit.readIcon("/com/fr/design/images/m_file/preview.png"));
-        }
-
-        public void actionPerformed(ActionEvent evt) {
-            checkParameter();
-            DesignKit.previewTableData(MongoDBBaseTableDataPane.this.updateBean());
-        }
     }
 
 
