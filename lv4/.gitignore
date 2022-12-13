@@ -1,0 +1,10 @@
+*.iml
+.idea/
+lib/report/*.jar
+target/
+.DS_Store
+.gradle
+build
+local.properties
+classes/
+transform-classes/

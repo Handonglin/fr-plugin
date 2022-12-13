@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><plugin>
+    <id>com.fr.plugin.function.lv2</id>
+    <name><![CDATA[lv-2两个函数]]></name>
+    <active>yes</active>
+    <version>1.0</version>
+    <env-version>10.0</env-version>
+    <jartime>2018-07-31</jartime>
+    <vendor>Handonglin</vendor>
+    <description><![CDATA[lv-2两个函数]]></description>
+    <change-notes><![CDATA[
+      [2022-12-5]修改一点问题。<br/>
+      [2022-12-5]初始化插件。<br/>
+    ]]></change-notes>
+    <extra-core>
+        <FunctionDefineProvider class="com.fr.plugin.HandonglinSqrt" name="HandonglinSqrt" description="求平方根"/>
+    </extra-core>
+    <function-recorder class="com.fr.plugin.HandonglinSqrt"/>
+
+    <extra-core>
+        <FunctionDefineProvider class="com.fr.plugin.HandonglinFib" name="HandonglinFib" description="斐波那契后四位"/>
+    </extra-core>
+    <function-recorder class="com.fr.plugin.HandonglinFib"/>
+</plugin>

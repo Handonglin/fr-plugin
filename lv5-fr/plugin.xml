@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><plugin>
+    <id>com.fr.plugin.sunburst</id>
+    <name><![CDATA[旭日图]]></name>
+    <active>yes</active>
+    <version>1.0.0</version>
+    <env-version>10.0</env-version>
+    <jartime>2018-1-11</jartime>
+    <vendor>Handonglin</vendor>
+    <description><![CDATA[旭日图]]></description>
+    <change-notes><![CDATA[]]></change-notes>
+    <main-package>com.fr.plugin.sunburst</main-package>
+
+
+    <function-recorder class="com.fr.plugin.sunburst.SunburstChart"/>
+
+    <extra-chart>
+        <ChartTypeProvider class="com.fr.plugin.sunburst.type.ChartType" chartID="SUNBURST_CHART"/>
+    </extra-chart>
+
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.sunburst.SunburstLocaleFinder"/>
+    </extra-core>
+
+    <extra-chart-designer>
+        <ChartTypeUIProvider class="com.fr.plugin.sunburst.ui.MainUI" chartID="SUNBURST_CHART"/>
+    </extra-chart-designer>
+
+</plugin>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.plugin.parameter.slider</id>
+    <main-package>com.fr.plugin.parameter.slider</main-package>
+    <name><![CDATA[数值滑块控件]]></name>
+    <active>yes</active>
+    <version>1.0</version>
+    <env-version>10.0~</env-version>
+    <jartime>2018-10-20</jartime>
+    <vendor>Handonglin</vendor>
+    <description><![CDATA[数值滑块控件。]]></description>
+    <change-notes><![CDATA[
+        [2018-11-22]增加了插件功能说明。<br/>
+    ]]></change-notes>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.parameter.slider.SliderLocaleBridge"/>
+    </extra-core>
+    <extra-report>
+        <JavaScriptPlaceHolder class="com.fr.plugin.parameter.slider.SliderJavaScriptHolderBridge"/>
+        <StylePlaceHolder class="com.fr.plugin.parameter.slider.SliderStyleHolderBridge"/>
+        <JavaScriptFileHandler class="com.fr.plugin.parameter.slider.SliderJavaScriptBridge"/>
+    </extra-report>
+    <extra-designer>
+        <ParameterWidgetOptionProvider class="com.fr.plugin.parameter.slider.SliderBridge"/>
+    </extra-designer>
+    <function-recorder class="com.fr.plugin.parameter.slider.fun.Slider"/>
+</plugin>

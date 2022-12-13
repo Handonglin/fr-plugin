@@ -1,0 +1,8 @@
+rootProject.name = 'starter'
+//include(':lv1')
+//include(':lv2')
+include(':lv3')
+include(':lv4')
+//include(':lv6')
+//include(':lv7')
+include(':lv5-fr')

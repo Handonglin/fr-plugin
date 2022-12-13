@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.solution.plugin.db.MongoDB.插件</id>
+    <name><![CDATA[MongoDB插件]]></name>
+    <active>yes</active>
+    <version>7.4.3</version>
+    <env-version>10.0</env-version>
+    <jartime>2020-01-20</jartime>
+    <vendor>Handonglin</vendor>
+    <description><![CDATA[可以连接，进行简单全查询>_<]]></description>
+    <change-notes><![CDATA[    ]]></change-notes>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.db.mongodb.MongoDBLocaleFinder"/>
+    </extra-core>
+    <extra-designer>
+        <!--连接相关        -->
+        <ConnectionProvider class="com.fr.plugin.db.mongodb.connect.MongoDBConnectionProvider"/>
+
+        <TableDataDefineProvider class="com.fr.plugin.db.mongodb.table.MongoDBTableDataDefiner"/>
+    </extra-designer>
+
+    <function-recorder class="com.fr.plugin.db.mongodb.table.core.MongoDBTableDatas"/>
+</plugin>
