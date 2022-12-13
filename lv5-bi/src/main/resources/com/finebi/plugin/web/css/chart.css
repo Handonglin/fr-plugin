@@ -1,0 +1,17 @@
+.chart-type-sunburst-column-icon .x-icon {
+    display: block;
+    background: url('${fineServletURL}/resources?path=/com/finebi/plugin/web/image/sun.png') no-repeat center center;
+    background-size: contain;
+}
+.chart-type-sunburst-column-icon .x-icon.hack {
+    background: url('${fineServletURL}/resources?path=/com/finebi/plugin/web/image/sun.png') no-repeat center center;
+}
+
+.chart-type-sunburst-column-disabled-icon .x-icon {
+    display: block;
+    background: url('${fineServletURL}/resources?path=/com/finebi/plugin/web/image/disablesun.png') no-repeat center center;
+    background-size: contain;
+}
+.chart-type-sunburst-column-disabled-icon .x-icon.hack {
+    background: url('${fineServletURL}/resources?path=/com/finebi/plugin/web/image/disablesun.png') no-repeat center center;
+}
