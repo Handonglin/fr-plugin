@@ -37,7 +37,7 @@ public class MongoDBTableDataPane extends MongoDBBaseTableDataPane<MongoDBTableD
 
     public String[] paramTexts() {
         //只会用到第一个
-        return new String[]{queryPane.getQuery(), queryPane.getScript()};
+        return new String[]{queryPane.getQuery()};
     }
 
 
