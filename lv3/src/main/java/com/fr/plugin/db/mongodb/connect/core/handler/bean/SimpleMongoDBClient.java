@@ -1,9 +1,10 @@
 package com.fr.plugin.db.mongodb.connect.core.handler.bean;
 
 import com.fr.plugin.db.mongodb.connect.core.handler.bean.emb.MongoDB;
+import com.fr.plugin.db.mongodb.table.data.DataWarp;
 import com.fr.plugin.db.mongodb.table.util.MongoDBDataDealUtils;
 import com.fr.plugin.db.mongodb.table.util.MongoDBUtils;
-import com.fr.plugin.db.mongodb.table.data.DataWarp;
+import com.fr.stable.AssistUtils;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
@@ -12,7 +13,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class SimpleMongoDBClient implements MongoDB{
     //连接到mongodb
@@ -60,11 +61,8 @@ public class SimpleMongoDBClient implements MongoDB{
             mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
             mongoDatabase = mongoClient.getDatabase(database);
 
-            //System.out.println("======SimpleMongoDBClient Create whitpwd End==========\n");
 
         }catch (Exception e){
-            //System.out.println(e);
-            //System.out.println("======SimpleMongoDBClient Create whitpwd End==========\n");
 
         }
 
@@ -75,13 +73,8 @@ public class SimpleMongoDBClient implements MongoDB{
     public String test() {
         try {
             String s = mongoClient.getConnectPoint();
-            //System.out.println("test result:success->"+s);
-
             return s;
         }catch (Exception e){
-            //System.out.println("test result:false");
-
-            //System.out.println(e);
 
             return "false";
         }
@@ -102,6 +95,18 @@ public class SimpleMongoDBClient implements MongoDB{
         DataWarp<Object> dataWarpper = MongoDBDataDealUtils.getDataWarpper(results);
 
         return dataWarpper;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof SimpleMongoDBClient
+                && AssistUtils.equals(this.mongoClient, ((SimpleMongoDBClient)obj).mongoClient)
+                && AssistUtils.equals(this.mongoDatabase, ((SimpleMongoDBClient)obj).mongoDatabase);
+    }
+
+    @Override
+    public int hashCode() {
+        return AssistUtils.hashCode(mongoClient);
     }
 
     @Override
