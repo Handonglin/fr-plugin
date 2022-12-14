@@ -24,6 +24,9 @@ public class MongoDBConnectionChosePane extends BasicPane {
     private List<DataLoadedListener> listeners = new ArrayList<DataLoadedListener>();
 
     public MongoDBConnectionChosePane() {
+        init();
+    }
+    public void init(){
         setLayout(new BorderLayout(4, 4));
         //选择连接
         connectionComboBoxPanel = new ConnectionComboBoxPanel(Connection.class) {
@@ -49,7 +52,6 @@ public class MongoDBConnectionChosePane extends BasicPane {
             }
         });
         add(connectionComboBoxPanel, BorderLayout.NORTH);
-
     }
 
 
