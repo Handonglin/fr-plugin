@@ -77,32 +77,34 @@ public class MongoDBDatabaseConnection extends BaseConnection {
     //正式用来测试连接的，那就直接真正连接，能连上就成功，连不上就失败
     @Override
     public void testConnection() throws Exception{
-        //System.out.println(getHost());
-        //System.out.println(getPort());
-        //System.out.println(getUsername());
-        //System.out.println(getPassword());
-        //System.out.println(getDatabase());
-        //System.out.println("======MongoDBDatabaseConnection testConnection Start==========");
-
-        MongoDB client = createMongoDBClient();
+        System.out.println(getHost());
+        System.out.println(getPort());
+        System.out.println(getUsername());
+        System.out.println(getPassword());
+        System.out.println(getDatabase());
+        System.out.println("======MongoDBDatabaseConnection testConnection Start==========");
+        MongoDB client=null;
         try {
+            client = createMongoDBClient();
             String test = client.test();
             if (test.equals("false")){
-                //System.out.println("======MongoDBDatabaseConnection testConnection End==========\n");
-
-                throw new Exception(test);
+                System.out.println("======MongoDBDatabaseConnection testConnection End==========\n");
+                throw new Exception();
             }
-            //System.out.println("======MongoDBDatabaseConnection testConnection End==========\n");
+            System.out.println(test);
+            System.out.println("======MongoDBDatabaseConnection testConnection End==========\n");
 
         }
         finally {
             //关闭测试的连接
-            client.close();
+            if (client!=null){
+                client.close();
+            }
         }
 
     }
 
-    public MongoDB createMongoDBClient() {
+    public MongoDB createMongoDBClient() throws Exception {
         return CreateCollectionHandler.createCollection(
                 getHost(),
                 getPort(),

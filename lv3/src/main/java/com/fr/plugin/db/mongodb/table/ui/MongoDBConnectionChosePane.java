@@ -26,7 +26,7 @@ public class MongoDBConnectionChosePane extends BasicPane {
     public MongoDBConnectionChosePane() {
         init();
     }
-    public void init(){
+    private void init(){
         setLayout(new BorderLayout(4, 4));
         //选择连接
         connectionComboBoxPanel = new ConnectionComboBoxPanel(Connection.class) {

@@ -14,7 +14,7 @@ public class CreateCollectionHandler {
 
     static private Map<String, MongoDB> clientMap = new HashMap<>();
 
-    static public MongoDB createCollection(String host, String port, String username, String password, String database) {
+    static public MongoDB createCollection(String host, String port, String username, String password, String database) throws Exception {
         String uid = host + ":"+port+"@"+username+password+database;
         if (clientMap.containsKey(uid)) {
             return clientMap.get(uid);
@@ -27,7 +27,7 @@ public class CreateCollectionHandler {
 
                 return mongoDB;
             }else {
-                MongoDB mongoDB = usePwd(host, port, username, password, "admin");
+                MongoDB mongoDB = usePwd(host, port, username, password, database);
                 clientMap.put(uid,mongoDB);
 
                 return mongoDB;
@@ -50,6 +50,5 @@ public class CreateCollectionHandler {
         simpleMongoDBClient.usePwd(host, port, username, password, database);
         return simpleMongoDBClient;
     }
-
-
+    
 }

@@ -30,6 +30,9 @@ public abstract class MongoDBBaseTableDataPane<T extends TableData> extends Abst
 
 
     public MongoDBBaseTableDataPane() {
+        init();
+    }
+    private void init(){
         this.setLayout(new BorderLayout(4, 4));
 
         Box box = new Box(BoxLayout.Y_AXIS);

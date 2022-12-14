@@ -102,8 +102,6 @@ public class MongoDBConnectionPane extends DatabaseConnectionPane<MongoDBDatabas
         usernameField.setText(ob.getUsername());
         passwordTextField.setText(ob.getPassword());
         databaseField.setText(ob.getDatabase());
-
-
     }
 
     @Override

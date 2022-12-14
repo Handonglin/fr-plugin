@@ -23,49 +23,39 @@ public class SimpleMongoDBClient implements MongoDB{
 
     public void noPwd(String host,String port,String database){
         try{
-            //System.out.println("======SimpleMongoDBClient nopwd Create Start==========");
-            //System.out.println("host:"+host);
-            //System.out.println("port:"+port);
-            //System.out.println(getUsername());
-            //System.out.println(getPassword());
-            //System.out.println("database:"+database);
+            System.out.println("======SimpleMongoDBClient nopwd Create Start==========");
+            System.out.println("host:"+host);
+            System.out.println("port:"+port);
+            System.out.println("database:"+database);
             mongoClient=new MongoClient(host,Integer.parseInt(port));
 
             mongoDatabase=mongoClient.getDatabase(database);
 
-            //System.out.println("======SimpleMongoDBClient nopwd Create End==========\n");
+            System.out.println("======SimpleMongoDBClient nopwd Create End==========\n");
 
 
         }catch (Exception e){
-            //System.out.println(e);
-            //System.out.println("======SimpleMongoDBClient nopwd Create End==========\n");
+            System.out.println(e);
+            System.out.println("======SimpleMongoDBClient nopwd Create End==========\n");
 
         }
 
     }
 
-    public void usePwd(String host, String port, String username, String password, String database){
-        try {
-            //System.out.println("======SimpleMongoDBClient Create whitpwd Start==========");
-            //System.out.println("host:"+host);
-            //System.out.println("port:"+port);
-            //System.out.println("host:"+host);
-            //System.out.println("port:"+port);
-            //System.out.println("username:"+username);
-            //System.out.println("password:"+password);
-            //System.out.println("database:"+database);
+    public void usePwd(String host, String port, String username, String password, String database) {
+        System.out.println("======SimpleMongoDBClient Create whitpwd Start==========");
+        System.out.println("host:"+host);
+        System.out.println("port:"+port);
+        System.out.println("host:"+host);
+        System.out.println("port:"+port);
+        System.out.println("username:"+username);
+        System.out.println("password:"+password);
+        System.out.println("database:"+database);
 
-            ServerAddress serverAddress = new ServerAddress(host, Integer.parseInt(port));
-            MongoCredential credential = MongoCredential.createCredential(username, database, password.toCharArray());
-
-            mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
-            mongoDatabase = mongoClient.getDatabase(database);
-
-
-        }catch (Exception e){
-
-        }
-
+        ServerAddress serverAddress = new ServerAddress(host, Integer.parseInt(port));
+        MongoCredential credential = MongoCredential.createCredential(username, database, password.toCharArray());
+        mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
+        mongoDatabase = mongoClient.getDatabase(database);
     }
 
 

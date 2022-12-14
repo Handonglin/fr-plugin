@@ -15,7 +15,7 @@ public class MongoDBTableDataModel extends BaseDataModel {
     private String[] columnNames;
     private List<List<String>> data;
 
-    public MongoDBTableDataModel(CalculatorProvider calculator, ParameterProvider[] ps, MongoDBDatabaseConnection mc, String query, int rowCount) {
+    public MongoDBTableDataModel(CalculatorProvider calculator, ParameterProvider[] ps, MongoDBDatabaseConnection mc, String query, int rowCount) throws Exception {
         if (PluginContexts.currentContext().isAvailable()) {
             initMongoDBData(calculator, ps, mc, query, rowCount);
         } else {
@@ -26,12 +26,12 @@ public class MongoDBTableDataModel extends BaseDataModel {
     //核心任务：
     //1.query查询
     //2.构造data数据和columName数据
-    private void initMongoDBData(CalculatorProvider calculator, ParameterProvider[] ps, MongoDBDatabaseConnection mc, String query, int rowCount) {
+    private void initMongoDBData(CalculatorProvider calculator, ParameterProvider[] ps, MongoDBDatabaseConnection mc, String query, int rowCount) throws Exception {
         if (StringKit.isEmpty(query)) {
             return;
         }
-        //System.out.println("======MongoDBTableDataModel=======");
-        //System.out.println("query:"+query);
+        System.out.println("======MongoDBTableDataModel=======");
+        System.out.println("query:"+query);
         MongoDB mongoDBClient = mc.createMongoDBClient();
 
         DataWarp<String> dataWarp = mongoDBClient.find(query);

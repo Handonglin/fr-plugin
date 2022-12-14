@@ -67,13 +67,18 @@ public class MongoDBTableDatas extends BaseTableData {
         if (StringKit.isNotEmpty(name)) {
             MongoDBDatabaseConnection mongoConnect=ConnectionKit.getConnection(name, MongoDBDatabaseConnection.class);
             if (mongoConnect!=null){
-                DataModel model=new MongoDBTableDataModel(
-                        calculator,
-                        ps,
-                        mongoConnect,
-                        MongoDBUtils.calculateQuery(query.get(),ps),
-                        rowCount
-                );
+                DataModel model= null;
+                try {
+                    model = new MongoDBTableDataModel(
+                            calculator,
+                            ps,
+                            mongoConnect,
+                            MongoDBUtils.calculateQuery(query.get(),ps),
+                            rowCount
+                    );
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 return model;
 
             }

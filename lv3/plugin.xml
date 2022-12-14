@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plugin>
-    <id>com.fr.solution.plugin.db.MongoDB.插件</id>
-    <name><![CDATA[MongoDB插件]]></name>
+    <id>com.fr.solution.plugin.db.MongoDB.数据集</id>
+    <name><![CDATA[MongoDB数据集]]></name>
     <active>yes</active>
     <version>7.4.3</version>
     <env-version>10.0</env-version>
